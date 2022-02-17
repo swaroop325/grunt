@@ -5,6 +5,10 @@ module.exports = function (grunt) {
       name: "multisample",
       version: "1.0",
     },
+    clean: {
+      file: "fonts/*", //to delete any files not required
+      folders: ["fonts"], //to delete any folders
+    },
     //     pkg: grunt.file.readJSON("package.json"),
     //     uglify: {
     //       options: {
@@ -19,7 +23,7 @@ module.exports = function (grunt) {
   });
 
   //   // Load the plugin that provides the "uglify" task.
-  //   grunt.loadNpmTasks("grunt-contrib-uglify");
+  grunt.loadNpmTasks("grunt-contrib-clean");
 
   //Task with parameter.
   grunt.registerTask("task1", "task1", function (name) {
@@ -32,7 +36,7 @@ module.exports = function (grunt) {
   });
 
   //default
-  grunt.registerTask("default", ["task1:Swaroop", "task2"]);
+  grunt.registerTask("default", ["task1:Swaroop", "task2", "clean"]);
 
   grunt.registerMultiTask("multi", "description", function () {
     grunt.log.writeln("printing " + this.target + " " + this.data);
