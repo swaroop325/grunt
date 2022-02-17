@@ -9,6 +9,14 @@ module.exports = function (grunt) {
       file: "fonts/*", //to delete any files not required
       folders: ["fonts"], //to delete any folders
     },
+    htmlhint: {
+      templates: {
+        options: {
+          "tag-self-close": true,
+        },
+        src: "index.html",
+      },
+    },
     //     pkg: grunt.file.readJSON("package.json"),
     //     uglify: {
     //       options: {
@@ -24,6 +32,7 @@ module.exports = function (grunt) {
 
   //   // Load the plugin that provides the "uglify" task.
   grunt.loadNpmTasks("grunt-contrib-clean");
+  grunt.loadNpmTasks("grunt-htmlhint");
 
   //Task with parameter.
   grunt.registerTask("task1", "task1", function (name) {
@@ -36,7 +45,7 @@ module.exports = function (grunt) {
   });
 
   //default
-  grunt.registerTask("default", ["task1:Swaroop", "task2", "clean"]);
+  grunt.registerTask("default", ["task1:Swaroop", "task2", "htmlhint"]);
 
   grunt.registerMultiTask("multi", "description", function () {
     grunt.log.writeln("printing " + this.target + " " + this.data);
