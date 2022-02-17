@@ -1,6 +1,10 @@
 module.exports = function (grunt) {
   // Project configuration.
   grunt.initConfig({
+    multi: {
+      name: "multisample",
+      version: "1.0",
+    },
     //     pkg: grunt.file.readJSON("package.json"),
     //     uglify: {
     //       options: {
@@ -29,4 +33,8 @@ module.exports = function (grunt) {
 
   //default
   grunt.registerTask("default", ["task1:Swaroop", "task2"]);
+
+  grunt.registerMultiTask("multi", "description", function () {
+    grunt.log.writeln("printing " + this.target + " " + this.data);
+  });
 };
